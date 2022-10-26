@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather_app</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="serch">
+      <input type="text" id="city_in" />
+      <button id="city_submit">Search</button>
+    </div>
+    <div id="info"></div>
+
+    <script>
+      //   let cityname = document.getElementById("city_in").value;
+      //   let cityname = "nagpur";
+      let APIkey = "get new api key from https://openweathermap.org/";
+
+      document.getElementById("city_submit").onclick = async () => {
+        let cityname = document.getElementById("city_in").value;
+
+        let responseFromApi = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=${APIkey}`
+        );
+
+        let dataFromResponse = await responseFromApi.json();
+        try {
+          document.getElementById("info").innerHTML = `
+            <h1 class="city_dis">
+              City:
+              ${dataFromResponse.name}</h1>
+            <h1 class="temp_dis">
+              Temperature:
+              ${dataFromResponse.main.temp} C</h1>
+            <h2 class="desc">
+              Weather Condition:
+              ${dataFromResponse.weather[0].description}</h2>
+        `;
+        } catch (err) {
+          document.getElementById("info").innerHTML = `
+            <h1 class="city_dis">
+              buddy something is Wrong
+             </h1>
+             
+            
+        `;
+          console.log(err);
+        }
+
+        console.log(cityname);
+      };
+    </script>
+
+    <!-- old code below thiis line  -->
+    <!-- <script>
+      //THIS IS OLD CODE Where I have learned promises and fetch
+      //   let cityname = document.getElementById("city_in").value;
+      //   let cityname = "Your CITY ";
+      let APIkey = "Your API KEY";
+
+      document.getElementById("city_submit").onclick = () => {
+        let cityname = document.getElementById("city_in").value;
+
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=${APIkey}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("info").innerHTML = `
+                <h1 class="city_dis">
+                  City:
+                  ${data.name}</h1>
+                <h1 class="temp_dis">
+                  Temperature:
+                  ${data.main.temp} C</h1>
+                <h2 class="desc">
+                  Weather Condition:
+                  ${data.weather[0].description}</h2>
+            `;
+
+            // console.log(data);
+            // console.log(data.name);
+            // console.log(data.main.temp);
+            // console.log(data.weather[0].description);
+          })
+          .catch((err) => {
+            console.log(err);
+            document.getElementById("info").innerHTML = `
+              <div class="err_info">
+                <h1 class="error">Hay Buddy tell me correct city</h1>
+              </div>`;
+          });
+
+        console.log(cityname);
+      };
+    </script> -->
+  </body>
+</html>
