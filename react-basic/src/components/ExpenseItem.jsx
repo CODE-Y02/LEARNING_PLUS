@@ -1,16 +1,17 @@
 import React from "react";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
+import ExpenseDetails from "./ExpenseDetails";
 
 function ExpenseItem({ title, amount, LocationOfExpenditure, date }) {
   return (
     <div className="expense-item">
       <ExpenseDate date={date} />
-      <div className="expense-item__description">
-        <h2>{title}</h2>
-        <h3>{LocationOfExpenditure}</h3>
-        <div className="expense-item__price">{amount}</div>
-      </div>
+      <ExpenseDetails
+        title={title}
+        LocationOfExpenditure={LocationOfExpenditure}
+        amount={amount}
+      />
     </div>
   );
 }
