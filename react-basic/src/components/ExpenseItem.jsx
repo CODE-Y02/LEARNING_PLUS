@@ -1,13 +1,19 @@
 import React from "react";
+import "./ExpenseItem.css";
 
-function ExpenseItem({ name, amount, LocationOfExpenditure }) {
+function ExpenseItem({ title, amount, LocationOfExpenditure, date }) {
+  const month = date.toLocaleString("en-US", { month: "long" });
+  const year = date.getFullYear();
+  const day = date.toLocaleString("en-US", { day: "2-digit" });
   return (
     <div className="expense-item">
-      <div>JAN 4 2023</div>
+      <div>
+        {month} {day} {year}
+      </div>
       <div className="expense-item__description">
-        <h2>{name}</h2>
+        <h2>{title}</h2>
+        <h3>{LocationOfExpenditure}</h3>
         <div className="expense-item__price">{amount}</div>
-        {LocationOfExpenditure}
       </div>
     </div>
   );
