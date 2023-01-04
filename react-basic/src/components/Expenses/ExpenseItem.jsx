@@ -4,7 +4,7 @@ import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Card";
 
-function ExpenseItem({ title, amount, LocationOfExpenditure, date }) {
+const ExpenseItem = ({ title, amount, LocationOfExpenditure, date }) => {
   return (
     <Card className="expense-item">
       <ExpenseDate date={date} />
@@ -27,6 +27,6 @@ function ExpenseItem({ title, amount, LocationOfExpenditure, date }) {
     //   })
     // )
   );
-}
+};
 
 export default ExpenseItem;
