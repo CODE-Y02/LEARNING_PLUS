@@ -5,6 +5,16 @@ import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Card";
 
 const ExpenseItem = ({ title, amount, LocationOfExpenditure, date }) => {
+  const clickHandler = () => {
+    console.log("clicked");
+  };
+
+  const deleteExpense = (event) => {
+    let ele = event.target.parentElement;
+    // console.log(ele);
+    ele.remove();
+  };
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={date} />
@@ -13,6 +23,8 @@ const ExpenseItem = ({ title, amount, LocationOfExpenditure, date }) => {
         LocationOfExpenditure={LocationOfExpenditure}
         amount={amount}
       />
+      <button onClick={clickHandler}>Change Title </button>
+      <button onClick={deleteExpense}>Delete</button>
     </Card>
 
     // THIS happen with JSX under the hood
