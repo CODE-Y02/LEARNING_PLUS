@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Card";
 
 const ExpenseItem = ({ title, amount, LocationOfExpenditure, date }) => {
+  const [titleState, setTitle] = useState(title);
+  const [amountState, seAmount] = useState(amount);
+
+  // console.log("EXPENSE item is rendered");
+
   const clickHandler = () => {
     console.log("clicked");
+
+    setTitle("new Title");
+  };
+
+  const add100toAmount = () => {
+    seAmount(amountState + 100);
   };
 
   const deleteExpense = (event) => {
@@ -19,12 +30,13 @@ const ExpenseItem = ({ title, amount, LocationOfExpenditure, date }) => {
     <Card className="expense-item">
       <ExpenseDate date={date} />
       <ExpenseDetails
-        title={title}
+        title={titleState}
         LocationOfExpenditure={LocationOfExpenditure}
-        amount={amount}
+        amount={amountState}
       />
       <button onClick={clickHandler}>Change Title </button>
       <button onClick={deleteExpense}>Delete</button>
+      <button onClick={add100toAmount}>Add 100$</button>
     </Card>
 
     // THIS happen with JSX under the hood
