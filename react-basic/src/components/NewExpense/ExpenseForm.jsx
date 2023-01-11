@@ -42,7 +42,10 @@ function ExpenseForm() {
       date: new Date(enteredDate),
     };
     console.log(expenseData);
-    // setUserInputState({});
+
+    setEnteredAmount("");
+    setEnteredDate("");
+    setEnteredtitle("");
   };
 
   return (
@@ -50,7 +53,11 @@ function ExpenseForm() {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Expense title</label>
-          <input type="text" onChange={changeExpenseTitle} />
+          <input
+            type="text"
+            value={enteredtitle}
+            onChange={changeExpenseTitle}
+          />
         </div>
         <div className="new-expense__control">
           <label>Expense Amount</label>
@@ -58,12 +65,13 @@ function ExpenseForm() {
             type="number"
             min="0.01"
             step="0.01"
+            value={enteredAmount}
             onChange={changeExpenseAmount}
           />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" onChange={changeExpenseDate} />
+          <input type="date" value={enteredDate} onChange={changeExpenseDate} />
         </div>
       </div>
 
