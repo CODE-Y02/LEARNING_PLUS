@@ -14,6 +14,8 @@ function NewExpense(props) {
 
     // console.log(expenseData);
     props.onAddExpense(expenseData);
+
+    setShowForm(false);
   };
 
   const closeForm = () => {
@@ -22,20 +24,21 @@ function NewExpense(props) {
 
   return (
     <div className="new-expense">
-      {showForm ? (
-        <ExpenseForm
-          onCancel={closeForm}
-          onSaveExpenseData={saveExpenseDataHandler}
-        />
-      ) : (
+      {!showForm && (
         <button
           onClick={() => {
             setShowForm(true);
           }}
         >
-          {" "}
           Add New Expense
         </button>
+      )}
+
+      {showForm && (
+        <ExpenseForm
+          onCancel={closeForm}
+          onSaveExpenseData={saveExpenseDataHandler}
+        />
       )}
     </div>
   );
