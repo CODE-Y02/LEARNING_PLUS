@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
@@ -27,18 +27,19 @@ const ExpenseItem = ({ title, amount, LocationOfExpenditure, date }) => {
   // };
 
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={date} />
-      <ExpenseDetails
-        title={title}
-        LocationOfExpenditure={LocationOfExpenditure}
-        amount={amount}
-      />
-      {/* <button onClick={clickHandler}>Change Title </button>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={date} />
+        <ExpenseDetails
+          title={title}
+          LocationOfExpenditure={LocationOfExpenditure}
+          amount={amount}
+        />
+        {/* <button onClick={clickHandler}>Change Title </button>
       <button onClick={deleteExpense}>Delete</button>
       <button onClick={add100toAmount}>Add 100$</button> */}
-    </Card>
-
+      </Card>
+    </li>
     // THIS happen with JSX under the hood
     // React.createElement(
     //   "div",
