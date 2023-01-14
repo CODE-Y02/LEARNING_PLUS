@@ -29,7 +29,9 @@ const CourseInput = (props) => {
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </div>
-      <Button type="submit">Add Goal</Button>
+      <Button invalid={!isValid} type="submit">
+        Add Goal
+      </Button>
     </form>
   );
 };
