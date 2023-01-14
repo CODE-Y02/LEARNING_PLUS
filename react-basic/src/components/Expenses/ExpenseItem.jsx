@@ -1,44 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Card";
 
 const ExpenseItem = ({ title, amount, LocationOfExpenditure, date }) => {
-  const [titleState, setTitle] = useState(title);
-  const [amountState, seAmount] = useState(amount);
+  // const [titleState, setTitle] = useState(title);
+  // const [amountState, seAmount] = useState(amount);
 
   // console.log("EXPENSE item is rendered");
 
-  const clickHandler = () => {
-    console.log("clicked");
+  // const clickHandler = () => {
+  //   console.log("clicked");
 
-    setTitle("new Title");
-  };
+  //   setTitle("new Title");
+  // };
 
-  const add100toAmount = () => {
-    seAmount(amountState + 100);
-  };
+  // const add100toAmount = () => {
+  //   seAmount(amountState + 100);
+  // };
 
-  const deleteExpense = (event) => {
-    let ele = event.target.parentElement;
-    // console.log(ele);
-    ele.remove();
-  };
+  // const deleteExpense = (event) => {
+  //   let ele = event.target.parentElement;
+  //   // console.log(ele);
+  //   ele.remove();
+  // };
 
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={date} />
-      <ExpenseDetails
-        title={titleState}
-        LocationOfExpenditure={LocationOfExpenditure}
-        amount={amountState}
-      />
-      <button onClick={clickHandler}>Change Title </button>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={date} />
+        <ExpenseDetails
+          title={title}
+          LocationOfExpenditure={LocationOfExpenditure}
+          amount={amount}
+        />
+        {/* <button onClick={clickHandler}>Change Title </button>
       <button onClick={deleteExpense}>Delete</button>
-      <button onClick={add100toAmount}>Add 100$</button>
-    </Card>
-
+      <button onClick={add100toAmount}>Add 100$</button> */}
+      </Card>
+    </li>
     // THIS happen with JSX under the hood
     // React.createElement(
     //   "div",
